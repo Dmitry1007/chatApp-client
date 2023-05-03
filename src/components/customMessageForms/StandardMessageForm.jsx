@@ -15,7 +15,7 @@ function StandardMessageForm({ props, activeChat }) {
         setMessage(event.target.value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const date = new Date()
             .toISOString()
             .replace("T", " ")
@@ -30,6 +30,7 @@ function StandardMessageForm({ props, activeChat }) {
             text: message,
             activeChatId: activeChat.id,
         };
+
         props.onSubmit(form);
         setMessage("");
         setAttachment("");
