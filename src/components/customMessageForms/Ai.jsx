@@ -28,7 +28,6 @@ function Ai({ props, activeChat }) {
         };
 
         props.onSubmit(form);
-        console.log("trigger ", trigger);
         trigger(form);
         setMessage("");
         setAttachment("");
