@@ -6,7 +6,14 @@ import {
 } from "@heroicons/react/24/solid";
 import Dropzone from "react-dropzone";
 
-function MessageFormUI({ setAttachment, message, handleChange, handleSubmit }) {
+function MessageFormUI({
+    setAttachment,
+    message,
+    handleChange,
+    handleSubmit,
+    appendText,
+    handleKeyDown,
+}) {
     const [previewAttachment, setPreviewAttachment] = useState("");
 
     return (
@@ -35,8 +42,17 @@ function MessageFormUI({ setAttachment, message, handleChange, handleSubmit }) {
                         type="text"
                         value={message}
                         onChange={handleChange}
+                        onKeyDown={handleKeyDown}
                         placeholder="Type a message..."
                     />
+                    {appendText && (
+                        <input
+                            className="message-form-assist"
+                            type="text"
+                            disabled="disabled"
+                            value={`${message} ${appendText}`}
+                        />
+                    )}
                 </div>
                 <div className="message-form-icons">
                     <Dropzone

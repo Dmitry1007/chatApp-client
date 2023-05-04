@@ -6,6 +6,7 @@ import {
 import Header from "@/components/customHeader";
 import StandardMessageForm from "@/components/customMessageForms/StandardMessageForm";
 import AiMessageForm from "@/components/customMessageForms/Ai";
+import AiCompletion from "@/components/customMessageForms/AiCompletion";
 
 function Chat() {
     const chatProps = useMultiChatLogic(
@@ -25,6 +26,14 @@ function Chat() {
                     if (chatProps.chat?.title.startsWith("AiChat_")) {
                         return (
                             <AiMessageForm
+                                props={props}
+                                activeChat={chatProps.chat}
+                            />
+                        );
+                    }
+                    if (chatProps.chat?.title.startsWith("AiCompletion_")) {
+                        return (
+                            <AiCompletion
                                 props={props}
                                 activeChat={chatProps.chat}
                             />
