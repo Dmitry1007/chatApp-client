@@ -8,11 +8,11 @@ import StandardMessageForm from "@/components/customMessageForms/StandardMessage
 import AiMessageForm from "@/components/customMessageForms/Ai";
 import AiCompletion from "@/components/customMessageForms/AiCompletion";
 
-function Chat() {
+function Chat({ user, secret }) {
     const chatProps = useMultiChatLogic(
         import.meta.env.VITE_PROJECT_ID,
-        "testuser1",
-        "12345"
+        user,
+        secret
     );
 
     return (

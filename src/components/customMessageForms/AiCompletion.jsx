@@ -49,7 +49,8 @@ function AiCompletion({ props, activeChat }) {
         setAttachment("");
     };
 
-    const debouncedValue = useDebounce(message, 1000);
+    // wait 2 seconds before sending the message to the AI
+    const debouncedValue = useDebounce(message, 2000);
 
     useEffect(() => {
         if (debouncedValue) {
@@ -59,11 +60,12 @@ function AiCompletion({ props, activeChat }) {
     }, [debouncedValue]); // eslint-disable-line
 
     const handleKeyDown = (e) => {
-        // handle enter or tab
+        // enter or tab adds the suggested text
         if (e.keyCode === 9 || e.keyCode === 13) {
             e.preventDefault();
             setMessage(`${message} ${appendText}`);
         }
+        // escape or any other key removes the suggested text
         setAppendText("");
     };
 
